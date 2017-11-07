@@ -109,6 +109,10 @@ def extractKeyphrases(text):
 def writeFiles(keyphrases, fileName):
     "outputs the keyphrases to files"
     print "Generating output to " + 'keywords/' + fileName
+    try:
+        os.stat(os.path.dirname("keywords/"))
+    except:
+        os.mkdir(os.path.dirname("keywords/"))
     keyphraseFile = io.open('keywords/' + fileName, 'w+')
     for keyphrase in keyphrases:
         keyphraseFile.write(keyphrase + '\n')
